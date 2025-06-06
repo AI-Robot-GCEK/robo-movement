@@ -1,0 +1,22 @@
+{
+  "name": "Robo Movements",
+  "version": "0.0.1",
+  "description": "A library for 17 Servo Robot Movements",
+  "keywords": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AI-Robot-GCEK/robo-movement"
+  },
+  "authors": [
+    {
+      "name": "Arun CS",
+      "email": "aruncs31ss@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "aruncs31s/Robo Initial Postions": "0.0.2"
+  },
+  "frameworks": ["arduino"],
+  "platforms": ["atmelavr", "espressif32"]
+}
