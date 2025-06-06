@@ -5,18 +5,18 @@
 
 // source: https://registry.platformio.org/libraries/aruncs31s/Robo%20Initial%20Postions
 #include <initial-positions.h>
-
+#include <Adafruit_PWMServoDriver.h>
 
 
 class Robo{
     public:
-        Robo(uint8_t _servo_id,Adafruit_PWMServoDriver& board);
-        Robo(uint8_t _servo_id,Adafruit_PWMServoDriver& board,bool isSplitBoard);
-
-        // ~Robo();
-        void begin();
-
-
+        Robo(uint8_t _servo_id);
+       
+        ~Robo();
+        
+        static void set_board(Adafruit_PWMServoDriver& board);
+        void initialize();
+        
         static uint8_t get_total_num_servos();
         static uint8_t get_current_num_servos();
         uint8_t get_current_angle();
@@ -36,16 +36,10 @@ class Robo{
         uint8_t _initial_angle;
         uint8_t _current_angle;
         uint8_t _previous_angle;
-        #if !defined(CONTROLLER_I2C_ADDR_2)
-        static bool isInitialized ; // Board status 
-        #endif 
-        #if defined(CONTROLLER_I2C_ADDR_2)
-        static bool isBoard1Initialized;
-        static bool isBoard2Initialized;
-        #endif
-        Adafruit_PWMServoDriver _board;
+        static Adafruit_PWMServoDriver* _board ;
+        
 };
 
 
 
-#endif __ROBO_MOVEMENTS_H
+#endif // __ROBO_MOVEMENTS_H
