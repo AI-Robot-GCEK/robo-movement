@@ -7,28 +7,33 @@
 #include <initial-positions.h>
 #include <Adafruit_PWMServoDriver.h>
 
+typedef struct {
+    uint8_t _id;
+    uint8_t _the_angle;
+}move_position_t;
+
+class Movement { 
+    public:
+        void _move(move_position_t* _positions[], uint8_t _num_positions);
+};
+
+
 
 class Robo{
     public:
         Robo(uint8_t _servo_id);
-       
         ~Robo();
-        
         static void set_board(Adafruit_PWMServoDriver& board);
         void initialize();
-        
         static uint8_t get_total_num_servos();
         static uint8_t get_current_num_servos();
         uint8_t get_current_angle();
         uint16_t get_current_pulse();
-
         void set_angle(uint8_t _angle);
         // //@brief set the angle of the servo
         void set_pulse(uint16_t _pulse);
-
         uint16_t get_pulse(uint8_t _angle);
-
-        
+        uint16_t _current_pulse; 
     private:
         static uint8_t _total_num_servos;
         static uint8_t _current_num_servos;
@@ -37,8 +42,9 @@ class Robo{
         uint8_t _current_angle;
         uint8_t _previous_angle;
         static Adafruit_PWMServoDriver* _board ;
-        
-};
+
+    };
+
 
 
 
